@@ -6,14 +6,14 @@ if (! slotstatus.publish(" SLOT 1,SLOT 2,SLOT 3 AVAILABLE"){}
   digitalWrite(slot2_l,HIGH);
   digitalWrite(slot3_l,HIGH);
   delay(1000);
-   myservos.write(OPEN_ANGLE); 
+   myservos.write(OPEN_ANGLE);
 count=count+1;                             //increment count
    delay(3000);
    myservos.write(CLOSE_ANGLE);
-   Serial.println("Car Entered ")
+   Serial.println("Car Entered ");
 }
 
- if( !(digitalRead(slot1)) && digitalRead(slot2) && (digitalRead(slot3)) )  //2 ; slot2 and slot3 available
+ if( !(digitalRead(s1)) && digitalRead(s2) && (digitalRead(s3)) )  //2 ; slot2 and slot3 available
   {
       Serial.println("Welcome, Available: sLOT2,sLOT3");
       if (! slotstatus.publish(" SLOT 2,SLOT 3 AVAILABLE"){}
@@ -21,8 +21,11 @@ count=count+1;                             //increment count
       digitalWrite(slot2_l,HIGH);
       digitalWrite(slot3_l,HIGH);
       delay(1000);
-      digitalWrite(gate_grn,HIGH);
-     gate.write(100); //gate will open after the dealy of 1 second
+      myservos.write(OPEN_ANGLE);
+   count=count+1;                             //increment count
+      delay(3000);
+      myservos.write(CLOSE_ANGLE);
+      Serial.println("Car Entered ");
   }
 
    if( digitalRead(slot1) && !(digitalRead(slot2)) && digitalRead(slot3))     //3 ; slot1 and slot3 available
@@ -33,12 +36,11 @@ count=count+1;                             //increment count
       digitalWrite(slot2_l,LOW);
       digitalWrite(slot3_l,HIGH);
       delay(1000);
-     digitalWrite(gate_grn,HIGH);
-
-
-     gate.write(100);
-      delay(100);                //gate will open after the dealy of 1 second
-
+      myservos.write(OPEN_ANGLE);
+   count=count+1;                             //increment count
+      delay(3000);
+      myservos.write(CLOSE_ANGLE);
+      Serial.println("Car Entered ");
    }
    if(digitalRead(slot1)&& digitalRead(slot2)&& !(digitalRead(slot3))) //4  slot1 and slot2 AVAILABLE
      {
@@ -48,11 +50,12 @@ count=count+1;                             //increment count
       digitalWrite(slot2_l,HIGH);
       digitalWrite(slot3_l,LOW);
       delay(1000);
-     digitalWrite(gate_grn,HIGH);
+      myservos.write(OPEN_ANGLE);
+   count=count+1;                             //increment count
+      delay(3000);
+      myservos.write(CLOSE_ANGLE);
+      Serial.println("Car Entered ");
 
-
-     gate.write(100);
-      delay(100);
      }
   if(!(digitalRead(slot1)) && !(digitalRead(slot2)) && digitalRead(slot3)) //5 ; slot3 avilable
   {
@@ -63,11 +66,12 @@ if (! slotstatus.publish(" SLOT 3 AVAILABLE"){}
       digitalWrite(slot2_l,LOW);
       digitalWrite(slot3_l,HIGH);
       delay(1000);
-     digitalWrite(gate_grn,HIGH);
+      myservos.write(OPEN_ANGLE);
+   count=count+1;                             //increment count
+      delay(3000);
+      myservos.write(CLOSE_ANGLE);
+      Serial.println("Car Entered ");
 
-
-     gate.write(100);
-      delay(100);
   }
   if(!(digitalRead(slot1)) && digitalRead(slot2) && !(digitalRead(slot3))) // 6 slot2 AVAILABLE
   {
@@ -77,11 +81,11 @@ if (! slotstatus.publish(" SLOT 2 AVAILABLE"){}
       digitalWrite(slot2_l,HIGH);
       digitalWrite(slot3_l,LOW);
       delay(1000);
-     digitalWrite(gate_grn,HIGH);
-
-
-     gate.write(100);
-      delay(100);
+      myservos.write(OPEN_ANGLE);
+   count=count+1;                             //increment count
+      delay(3000);
+      myservos.write(CLOSE_ANGLE);
+      Serial.println("Car Entered ");
 
   }
 
@@ -94,11 +98,12 @@ if (! slotstatus.publish(" SLOT 1 AVAILABLE"){}
       digitalWrite(slot2_l,LOW);
       digitalWrite(slot3_l,LOW);
       delay(1000);
-     digitalWrite(gate_grn,HIGH);
+      myservos.write(OPEN_ANGLE);
+   count=count+1;                             //increment count
+      delay(3000);
+      myservos.write(CLOSE_ANGLE);
+      Serial.println("Car Entered ");
 
-
-     gate.write(100);
-      delay(100);
   }
 
     if( !(digitalRead(slot1)) && !(digitalRead(slot2)) && !(digitalRead(slot3))) //8 ; no slot available
@@ -109,6 +114,9 @@ if (! slotstatus.publish(" SLOT 1 AVAILABLE"){}
         digitalWrite(slot2_l,LOW);
         digitalWrite(slot3_l,LOW);
         delay(1000);
+
+        Serial.println("Car not Entered ");
+        //next for red led
         digitalWrite(gate_red,HIGH);
         delay(100);
         digitalWrite(gate_red,LOW);
