@@ -28,7 +28,7 @@ count=count+1;                             //increment count
       Serial.println("Car Entered ");
   }
 
-   if( digitalRead(slot1) && !(digitalRead(slot2)) && digitalRead(slot3))     //3 ; slot1 and slot3 available
+   if( digitalRead(s1) && !(digitalRead(s2)) && digitalRead(s3))     //3 ; slot1 and slot3 available
    {
      Serial.println("Welcome, Available: sLOT1 and slot3");
      if (! slotstatus.publish(" SLOT 1,SLOT 3 AVAILABLE"){}
@@ -42,7 +42,7 @@ count=count+1;                             //increment count
       myservos.write(CLOSE_ANGLE);
       Serial.println("Car Entered ");
    }
-   if(digitalRead(slot1)&& digitalRead(slot2)&& !(digitalRead(slot3))) //4  slot1 and slot2 AVAILABLE
+   if(digitalRead(s1)&& digitalRead(s2)&& !(digitalRead(s3))) //4  slot1 and slot2 AVAILABLE
      {
       Serial.println("Welcome, Available: sLOT1 and slot2");
       if (! slotstatus.publish(" SLOT 1,SLOT 2 AVAILABLE"){}
@@ -57,7 +57,7 @@ count=count+1;                             //increment count
       Serial.println("Car Entered ");
 
      }
-  if(!(digitalRead(slot1)) && !(digitalRead(slot2)) && digitalRead(slot3)) //5 ; slot3 avilable
+  if(!(digitalRead(s1)) && !(digitalRead(s2)) && digitalRead(s3)) //5 ; slot3 avilable
   {
 
 Serial.println("Welcome, Available: slot3");
@@ -73,7 +73,7 @@ if (! slotstatus.publish(" SLOT 3 AVAILABLE"){}
       Serial.println("Car Entered ");
 
   }
-  if(!(digitalRead(slot1)) && digitalRead(slot2) && !(digitalRead(slot3))) // 6 slot2 AVAILABLE
+  if(!(digitalRead(s1)) && digitalRead(s2) && !(digitalRead(s3))) // 6 slot2 AVAILABLE
   {
 Serial.println("Welcome, Available: SLOT2 ");
 if (! slotstatus.publish(" SLOT 2 AVAILABLE"){}
@@ -89,7 +89,7 @@ if (! slotstatus.publish(" SLOT 2 AVAILABLE"){}
 
   }
 
-  if( digitalRead(slot1) && !(digitalRead(slot2)) && !(digitalRead(slot3))) //7 ; slot1 available
+  if( digitalRead(s1) && !(digitalRead(s2)) && !(digitalRead(s3))) //7 ; slot1 available
   {
 
 Serial.println("Welcome, Available: sLOT1 ");
@@ -106,7 +106,7 @@ if (! slotstatus.publish(" SLOT 1 AVAILABLE"){}
 
   }
 
-    if( !(digitalRead(slot1)) && !(digitalRead(slot2)) && !(digitalRead(slot3))) //8 ; no slot available
+    if( !(digitalRead(s1)) && !(digitalRead(s2)) && !(digitalRead(s3))) //8 ; no slot available
      {
        Serial.println("Welcome, Parking Full");// No slot available
        if (! slotstatus.publish("PARKING FULL"){}
