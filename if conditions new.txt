@@ -1,0 +1,116 @@
+if( digitalRead(s1) && digitalRead(s2) && digitalRead(s3))   //slot1,slot2,slot3 empty
+ {
+  Serial.println("Welcome, Available: sLOT1, sLOT2,sLOT3");  //print slot1 and slo2 available
+if (! slotstatus.publish(" SLOT 1,SLOT 2,SLOT 3 AVAILABLE"){}
+  digitalWrite(slot1_l,HIGH);
+  digitalWrite(slot2_l,HIGH);
+  digitalWrite(slot3_l,HIGH);
+  delay(1000);
+   myservos.write(OPEN_ANGLE);
+count=count+1;                             //increment count
+   delay(3000);
+   myservos.write(CLOSE_ANGLE);
+   Serial.println("Car Entered ")
+}
+
+ if( !(digitalRead(slot1)) && digitalRead(slot2) && (digitalRead(slot3)) )  //car on slot1,slot2 free
+  {
+      Serial.println("Welcome, Available: sLOT2,sLOT3");  // slo2 available
+      digitalWrite(slot1_l,LOW);
+      digitalWrite(slot2_l,HIGH);
+      digitalWrite(slot3_l,HIGH);
+      delay(1000);
+      digitalWrite(gate_grn,HIGH);
+     gate.write(100); //gate will open after the dealy of 1 second
+  }
+
+   if( digitalRead(slot1) && !(digitalRead(slot2)) && digitalRead(slot3))     //car on slot2,slot1 free
+   {
+     Serial.println("Welcome, Available: sLOT1 and slot3");  // slo1 available
+      digitalWrite(slot1_l,HIGH);
+      digitalWrite(slot2_l,LOW);
+      digitalWrite(slot3_l,HIGH);
+      delay(1000);
+     digitalWrite(gate_grn,HIGH);
+
+
+     gate.write(100); 
+      delay(100);                //gate will open after the dealy of 1 second
+
+   }
+   if(digitalRead(slot1)&& digitalRead(slot2)&& !(digitalRead(slot3))) //4
+     {
+      Serial.println("Welcome, Available: sLOT1 and slot2");  // slo1 available
+      digitalWrite(slot1_l,HIGH);
+      digitalWrite(slot2_l,LOW);
+      digitalWrite(slot3_l,HIGH);
+      delay(1000);
+     digitalWrite(gate_grn,HIGH);
+
+
+     gate.write(100); 
+      delay(100);       
+     }
+  if(!(digitalRead(slot1)) && !(digitalRead(slot2)) && digitalRead(slot3)) //5
+  {
+
+Serial.println("Welcome, Available: slot3");
+      digitalWrite(slot1_l,LOW);
+      digitalWrite(slot2_l,LOW);
+      digitalWrite(slot3_l,HIGH);
+      delay(1000);
+     digitalWrite(gate_grn,HIGH);
+
+
+     gate.write(100); 
+      delay(100);     
+  }
+  if(!(digitalRead(slot1)) && digitalRead(slot2) && !(digitalRead(slot3))) //6
+  {
+Serial.println("Welcome, Available: SLOT2 "); 
+      digitalWrite(slot1_l,LOW);
+      digitalWrite(slot2_l,HIGH);
+      digitalWrite(slot3_l,LOW);
+      delay(1000);
+     digitalWrite(gate_grn,HIGH);
+
+
+     gate.write(100); 
+      delay(100);     
+
+  }
+
+  if( digitalRead(slot1) && !(digitalRead(slot2)) && !(digitalRead(slot3))) //7
+  {
+
+Serial.println("Welcome, Available: sLOT1 ");  
+      digitalWrite(slot1_l,HIGH);
+      digitalWrite(slot2_l,LOW);
+      digitalWrite(slot3_l,LOW);
+      delay(1000);
+     digitalWrite(gate_grn,HIGH);
+
+
+     gate.write(100); 
+      delay(100);     
+  }
+
+    if( !(digitalRead(slot1)) && !(digitalRead(slot2)) && !(digitalRead(slot3))) //8
+     {
+       Serial.println("Welcome, Parking Full");// No slot available
+        digitalWrite(slot1_l,LOW);
+        digitalWrite(slot2_l,LOW);
+        digitalWrite(slot3_l,LOW);
+        delay(1000);
+        digitalWrite(gate_red,HIGH);
+        delay(100);
+        digitalWrite(gate_red,LOW);
+        delay(100);
+        digitalWrite(gate_red,HIGH);
+        delay(100);
+        digitalWrite(gate_red,LOW);
+
+
+     }
+
+ }
