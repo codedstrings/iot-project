@@ -93,7 +93,7 @@ void loop() {
  s2 = !digitalRead(slot2);
  s3 = !digitalRead(slot3);
  
-   if (entrysensor == 0) {                     // if high then count and send data
+   if (entrysensor == 1) {                     // if high then count and send data
    count=  count+1;                             //increment count
    myservos.write(OPEN_ANGLE);
    delay(3000);
